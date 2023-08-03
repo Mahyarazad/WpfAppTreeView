@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\file.png" />
+    <None Remove="Images\folder.png" />
+    <None Remove="Images\windows-drive.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\windows-drive.png" />
+  </ItemGroup>
+	
+</Project>
