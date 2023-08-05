@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using ViewModel.Data;
 
 namespace WpfAppTreeView
 {
@@ -12,31 +13,12 @@ namespace WpfAppTreeView
         public static HeaderToImageConverter Instance = new();
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value is null) return new object();
-            var path = (string)value;
-
-            if (path is null) return null;
-
-            //gGet the name of the item
-            var name = MainWindow.GetFileFolderName(path);
-
-            var image = "file.png";
-
-            // if the name is black we presume that it is drive 
-            if(name == string.Empty)
+            return (DirectoryItemType)value switch
             {
-                image = "windows-drive.png";
-            }else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
-            {
-                image = "folder.png";
-            }
-            else
-            {
-
-            }
-
-            return new BitmapImage (new Uri($"pack://application:,,,/Images/{image}"));
-         
+                DirectoryItemType.Folder => new BitmapImage(new Uri($"pack://application:,,,/Images/folder.png")),
+                DirectoryItemType.Drive => new BitmapImage(new Uri($"pack://application:,,,/Images/windows-drive.png")),
+                _ => new BitmapImage(new Uri($"pack://application:,,,/Images/file.png")),
+            };
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

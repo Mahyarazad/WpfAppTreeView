@@ -8,12 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\drive.png" />
     <None Remove="Images\file.png" />
     <None Remove="Images\folder.png" />
     <None Remove="Images\windows-drive.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\drive.png" />
     <Resource Include="Images\file.png" />
     <Resource Include="Images\folder.png" />
     <Resource Include="Images\windows-drive.png" />
